@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type="text/css">
+    h1 {
+        background-color: black;
+        color: red;
+    }
+    
+    
+    div {
+    background-color: black;
+    color: white;
+    margin: 20px 0 20px 0;
+    padding: 20px;
+    } 
+
+    
+        
+    </style>
     <meta charset="UTF-8">
     <title>Post List</title>
 </head>
 <body>
-    <h1>{{user}}</h1>
+    
     <ol>
-    	
-    		<li>{{list.title}}</li>
-    		<p>{{list.content}}</p>
-    		<p>{{list.updated}}</p>
-    		<p>{{list.timestamp}}</p>
-    	
+    	   {% for x in list%}
+    		<a href="/posts/detail/{{x.id}}"><div>
+            <a href="/posts/detail/{{x.id}}"><h1>{{x.title}}</h1></a>
+    		
+    		<p>{{x.updated}}</p>
+    		<p>{{x.timestamp}}</p>
+            </div></a>
+    	   {% endfor %}
     </ol>
 </body>
 </html>
