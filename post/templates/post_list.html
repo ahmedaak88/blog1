@@ -26,7 +26,8 @@
     <ol>
     	   {% for x in list%}
     		<div>
-            <a href="{%url 'detail' post_id=x.id %}"><h1>{{x.title}}</h1></a>
+            <a href={{x.get_absoulute_url}}><h1>{{x.title}}</h1></a>
+            <p>{{x.name_val}}</p>
     		
     		<p>{{x.updated}}</p>
     		<p>{{x.timestamp}}</p>
