@@ -28,15 +28,17 @@
 <body>
 
     
-    
+    		
+
     	
 
     		<div>
     		<h2>{{instance.title}}</h2>
     		<p>{{instance.content}}</p>
     		<p>{{instance.timestamp}}</p>
-
+    		<a href={{instance.update_url_post}}>Updating the post </a>
     		</div>
+    }
 
     	
     	<a href="{% url 'post:list' %}">Go back to the list</a>

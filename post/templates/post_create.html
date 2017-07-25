@@ -4,7 +4,7 @@
 	<title>form create </title>
 </head>
 <body>
-	<form method="POST">
+	<form method="POST" action="{% url 'post:create' %}">
 		{% csrf_token %}
 		{{form.as_p}}
 		<input type="submit" value="Create post">

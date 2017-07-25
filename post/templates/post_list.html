@@ -22,7 +22,14 @@
     <title>Post List</title>
 </head>
 <body>
-    
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+            
     <ol>
     	   {% for x in list%}
     		<div>
@@ -32,8 +39,11 @@
     		<p>{{x.croping}}</p>
     		<p>{{x.updated}}</p>
     		<p>{{x.timestamp}}</p>
+            <a href={{x.update_url_post}}>Updated your post</a>
+            <a href={{x.delete_url}}>delete your post</a>
             </div>
     	   {% endfor %}
     </ol>
+    <a href="{% url 'post:create' %}">Create a new Page</a>
 </body>
 </html>

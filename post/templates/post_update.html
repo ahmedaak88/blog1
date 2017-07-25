@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <meta charset="UTF-8">
-    <title>Post Update</title>
+	<title>form create </title>
 </head>
 <body>
-    <h1>The Post Update Page</h1>
+	<form method="POST" action="{% url 'post:update' post_id=post_obj.id %}">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value="Update post">
+	</form>
+
 </body>
 </html>
