@@ -1,34 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<style type="text/css">
-    h1 {
-        background-color: black;
-        color: red;
-    }
-    
-    
-    div {
-    background-color: black;
-    color: white;
-    margin: 20px 0 20px 0;
-    padding: 20px;
-    } 
-
-    
-        
-    </style>
-    <meta charset="UTF-8">
-    <title>Post List</title>
-</head>
-<body>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+{% extends "base.html" %}
+{% block content %}
+    {% block head_title %}My lists{% endblock head_title %}
+       
             
     <ol>
     	   {% for x in list%}
@@ -45,5 +18,4 @@
     	   {% endfor %}
     </ol>
     <a href="{% url 'post:create' %}">Create a new Page</a>
-</body>
-</html>
+{% endblock content%}
