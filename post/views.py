@@ -12,16 +12,8 @@ def post_detail(request, post_id):
     }
     return render(request, 'post_detail.html',context)
 
-#def post_detail(request):
-#   details = Post.objects.filter(title__contains="something")
-#    context2 = {
-#        "user": request.user,
-#        "list": details,
-#    }
-#    return render(request, 'post_detail.html',context2)
-
 def post_list(request):
-    details = Post.objects.all()
+    details = Post.objects.all()#order_by("-timestamp","-updated")
     context3 = {
         "user": request.user,
         "list": details,

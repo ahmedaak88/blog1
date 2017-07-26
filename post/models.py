@@ -26,3 +26,5 @@ class Post(models.Model):
 	def name_val(self):
 		return str(self.id) 
 		pass
+	class Meta:
+		ordering= ['-timestamp', '-updated']
