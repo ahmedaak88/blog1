@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 	{% block head_title %}update
 	{% endblock head_title %}
 
-	<form method="POST" action="{% url 'post:update' post_id=post_obj.id %}" enctype="multipart/form-data">
+	<form method="POST" action="{% url 'post:update' slug=post_obj.slug %}" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{form.as_p}}
 		<input type="submit" value="Update post">

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-	{% block head_title %}create
+	{% block head_title %}update
 	{% endblock head_title %}
-	<form method="POST" action="{% url 'post:create' %}" enctype="multipart/form-data">
+
+	<form method="POST" action="{% url 'post:signup'  %}" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{form|crispy}}
-		<input type="submit" value="Create post">
+		<input type="submit" value="signup">
 	</form>
-
 {% endblock content%}

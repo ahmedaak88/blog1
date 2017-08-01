@@ -6,21 +6,32 @@
 		{% block head_title %}
 		{% endblock head_title %}
 	</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+	{% block links_title %}
+		{% endblock links_title %}
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/colors.css' %}">
+<link rel="stylesheet" href="{% static 'css/12345.css' %}">
 </head>
 <body>
-<h1>Hello</h1>
- {% include 'messgese.html' %}
- <div class="container">
-{% block content %}
+		<ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="{%url 'post:home'%}">Home</a></li>
+            <li role="presentation"><a href="{%url 'post:list'%}">list</a></li>
+            <li role="presentation"><a href="{%url 'post:login'%}">login</a></li>
+            <li role="presentation"><a href="{%url 'post:signup'%}">signup</a></li>
+            <li role="presentation"><a href="{%url 'post:logout'%}">logout</a></li>
+        </ul>
+		 {% include 'messgese.html' %}
+		{%if user.is_superuser or user.is_staff%}
+		 {% include 'navbar.html' %}
+		{% endif%}
+		 <div class="container">
+		<cite>the user is :</cite><h3>{{user}}</h3>
+		{% block content %}
 
 
 
-{% endblock content%}
-</div>
-<script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
-<script src="{% static 'js/bootstrap.min.js'%}"></script>
+		{% endblock content%}
+		</div>
+		<script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
+		<script src="{% static 'js/bootstrap.min.js'%}"></script>
 </body>
 </html>
