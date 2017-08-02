@@ -19,6 +19,7 @@
             <li role="presentation"><a href="{%url 'post:signup'%}">signup</a></li>
             <li role="presentation"><a href="{%url 'post:logout'%}">logout</a></li>
         </ul>
+        {% include "facebook.html" %}
 		 {% include 'messgese.html' %}
 		{%if user.is_superuser or user.is_staff%}
 		 {% include 'navbar.html' %}
