@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^signup/$', views.usersignup, name="signup"),
     url(r'^login/$', views.userlogin, name="login"),
     url(r'^logout/$', views.userlogout, name="logout"),
+    url(r'^like_botton/(?P<post_id>[\d]+)/$', views.like_botton, name="like_botton"),
 
 
     url(r'^create/$', views.post_create, name="create"),
