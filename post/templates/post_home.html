@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block head_title %}Home{% endblock head_title %}   
 {% block links_title %}
-{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"> #}
+
+
 
         {% endblock links_title %}
 {% block content %}
@@ -11,10 +12,12 @@
    </div> 	
 <div class="jumbotron">
   
-  <div class ="card-panel teal lighten-2">
+  <div class ="card-panel teal lighten-2" id="accordion">
             
                 <a href={{post_last.get_absoulute_url}}><h2>{{post_last.title}}</h2></a>
+                <h3>content</h3>
                 <p>{{post_last.content|linebreaks}}</p>
+                <h3>time it was created</h3>
                 <p>{{post_last.timestamp}}</p>
                 {% if user.is_superuser or user.is_staff %}
                     <a href={{post_last.update_url_post}}>Updating the post </a>

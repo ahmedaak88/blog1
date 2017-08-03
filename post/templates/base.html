@@ -10,6 +10,7 @@
 		{% endblock links_title %}
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/54321.css' %}">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
 </head>
 <body>
 		<ul class="nav nav-tabs">
@@ -18,6 +19,8 @@
             <li role="presentation"><a href="{%url 'post:login'%}">login</a></li>
             <li role="presentation"><a href="{%url 'post:signup'%}">signup</a></li>
             <li role="presentation"><a href="{%url 'post:logout'%}">logout</a></li>
+            <li role="presentation"><a href="{%url 'post:create'%}">create post</a></li>
+
         </ul>
         {% include "facebook.html" %}
 		 {% include 'messgese.html' %}
@@ -32,6 +35,38 @@
 
 		{% endblock content%}
 		</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+
+    jQuery(function($)
+     {
+     	var data = [];
+     	$.ajax(
+            {
+                type:'GET',
+                url: '{% url "post:search_bar"  %}',
+                error: function(){
+                    console.log('error');
+                },
+                success: function(x){
+                    console.log('success');
+                    for (i=0 ; i < x.details.length ; i++ ){
+                    	data.push(x.details[i])
+                    }
+                    console.log(data)
+
+                },
+            }
+        );
+        
+        $("#search_bar").autocomplete({
+            source: data
+        });
+    });
+</script>
+
 		<script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
 		<script src="{% static 'js/bootstrap.min.js'%}"></script>
 </body>

@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^login/$', views.userlogin, name="login"),
     url(r'^logout/$', views.userlogout, name="logout"),
     url(r'^like_botton/(?P<post_id>[\d]+)/$', views.like_botton, name="like_botton"),
+    url(r'^search_bar/$', views.search_bar, name="search_bar"),
 
 
     url(r'^create/$', views.post_create, name="create"),

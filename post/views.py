@@ -10,6 +10,16 @@ from django.utils import timezone
 from django.db.models import Q
 from django.contrib.auth import authenticate , login ,logout
 
+def search_bar(request):
+    obj = Post.objects.all()
+    details = []
+    for x in obj:
+        details = details + [x.title]
+    context = {
+    "details": details,
+    }
+    return JsonResponse(context,safe=False)
+
 
 def like_botton(request, post_id):
     obj = Post.objects.get(id=post_id)
