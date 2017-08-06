@@ -97,18 +97,18 @@ def post_detail(request, slug):
     if obj.publish > date or obj.draft:
         if not(request.user.is_staff or request.user.is_superuser):
             raise   Http404
-    if request.user.is_authenticated():
-        if Like.objects.filter(post=obj, user=request.user).exists():
-            liked= True 
-        else:
-            liked = False
-    post_like_count = obj.like_set.all().count()
+    # if request.user.is_authenticated():
+    #     if Like.objects.filter(post=obj, user=request.user).exists():
+    #         liked= True 
+    #     else:
+    #         liked = False
+    # post_like_count = obj.like_set.all().count()
     
     context = {
         "user":request.user,
         "instance": obj,
-        "liked": liked,
-        "like_count" : post_like_count,
+        # "liked": liked,
+        # "like_count" : post_like_count,
     }
     return render(request, 'post_detail.html',context)
 
