@@ -3,7 +3,7 @@
 {% block links_title %}
 {% endblock links_title %}
 {% block content %}
-{% load urlfy %}
+<!--{% load urlfy %} -->
 
  <!--Author: {{instance.author.get_full_name}}-->
         
@@ -13,9 +13,9 @@
                 <p>{{instance.content|linebreaks}}</p>
                 <p>{{instance.publish}}</p>
                
-                {% if  user.is_superuser or user.is_staff %}
+             <!--   {% if  user.is_superuser or user.is_staff %}
                     <a href={{instance.update_url_post}} class="btn btn-primary">Updating the post </a>
-                {% endif %}
+                {% endif %} -->
                 
                 {% if instance.image %}
                     <a href="#" class="thumbnail">
@@ -24,8 +24,7 @@
                 {% endif %}
 
 
-                <!-- the share buttons for most of the servers  -->
-
+                <!-- the share buttons for most of the servers  
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" class="btn btn-info">
                     Share on Facebook
                 </a>
@@ -36,7 +35,8 @@
                 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{instance.title|urlfy}}&summary={{instance.content|urlfy}}&source={{request.build_absolute_uri}}" class="btn btn-info">
                     Share on Linkedin
                 </a>
-                
+                -->
+                </div>
             </div>
              
 <!--          this is the like botton for our page that we created
