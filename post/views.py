@@ -93,10 +93,10 @@ def post_home(request):
     return render(request, 'post_home.html', context)
 def post_detail(request, slug):
     obj = get_object_or_404(Post , slug=slug)
-    date = timezone.now().date()
-    if obj.publish > date or obj.draft:
-        if not(request.user.is_staff or request.user.is_superuser):
-            raise   Http404
+    # date = timezone.now().date()
+    # if obj.publish > date or obj.draft:
+    #     if not(request.user.is_staff or request.user.is_superuser):
+    #         raise   Http404
     # if request.user.is_authenticated():
     #     if Like.objects.filter(post=obj, user=request.user).exists():
     #         liked= True 
