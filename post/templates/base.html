@@ -13,20 +13,26 @@
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
 </head>
 <body>
+
+<!--  the main bar for the site -->
 		<ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="{%url 'post:home'%}">Home</a></li>
-            <li role="presentation"><a href="{%url 'post:list'%}">list</a></li>
-            <li role="presentation"><a href="{%url 'post:login'%}">login</a></li>
-            <li role="presentation"><a href="{%url 'post:signup'%}">signup</a></li>
-            <li role="presentation"><a href="{%url 'post:logout'%}">logout</a></li>
-            <li role="presentation"><a href="{%url 'post:create'%}">create post</a></li>
+            <li role="presentation" id="top-tab"><a href="{%url 'post:home'%}">Home</a></li>
+            <li role="presentation" id="top-tab"><a href="{%url 'post:list'%}">list</a></li>
+            <li role="presentation" id="top-tab"><a href="{%url 'post:login'%}">login</a></li>
+            <li role="presentation" id="top-tab"><a href="{%url 'post:signup'%}">signup</a></li>
+            <li role="presentation" id="top-tab"><a href="{%url 'post:logout'%}">logout</a></li>
+            {%if user.is_superuser or user.is_staff%}
+            <li role="presentation" id="top-tab"><a href="{%url 'post:create'%}">create post</a></li>
+            {% endif%}
 
         </ul>
+        
+
+        <!--  end of the nav bar -->
         {% include "facebook.html" %}
 		 {% include 'messgese.html' %}
-		{%if user.is_superuser or user.is_staff%}
 		 {% include 'navbar.html' %}
-		{% endif%}
+		
 		 <div class="container">
 		<cite>the user is :</cite><h3>{{user}}</h3>
 		{% block content %}
@@ -37,6 +43,7 @@
 		</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<!-- this is a script to autocomplete the search result showing the title of all the b  -->
 <script type="text/javascript">
 
 
@@ -66,6 +73,14 @@
         });
     });
 </script>
+<script type="text/javascript">
+       
+            $("li").click(function(){
+                $("#top-tab").next().addClass("text-danger");
+
+            });
+        
+        </script>
 
 		<script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
 		<script src="{% static 'js/bootstrap.min.js'%}"></script>

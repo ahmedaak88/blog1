@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head_title %}My lists{% endblock head_title %}
 {% block links_title %}
-{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"> #}
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"> -->
 {% endblock links_title %}
 {% block content %}
 
@@ -52,13 +52,17 @@
 
            {% endfor %}
         </div> 
+        
+
+<!-- the create button  -->
+
         {%if user.is_superuser or user.is_staff%}
     <a href="{% url 'post:create' %}" class= "btn btn-floating pulse"><i class="glyphicon glyphicon-plus" ></i>Create a new Page</a>
         {% endif%}
-{#this is where i place my pagintatio which make the pages show less posts #}
-<div class="homepage">
-    <a href="{%url 'post:home'%}">HOME PAGE</a>
-</div>
+
+
+
+<!--   this is where i place my pagintatio which make the pages show less posts -->
 <div class="pagination">
     <span class="step-links">
         {% if list.has_previous %}
@@ -74,5 +78,5 @@
         {% endif %}
     </span>
 </div>
-
+<!--  the end of pagintatior -->
 {% endblock content%}

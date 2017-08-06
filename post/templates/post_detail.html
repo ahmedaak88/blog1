@@ -25,6 +25,10 @@
                         <img src="{{instance.image.url}}" alt="...">
                      </a>
                 {% endif %}
+
+
+                <!-- the share buttons for most of the servers  -->
+
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" class="btn btn-info">
                     Share on Facebook
                 </a>
@@ -38,7 +42,8 @@
                 
             </div>
              
-<!--          </div>  
+<!--          this is the like botton for our page that we created
+</div>  
 <button class="btn" onclick="ajax_like()">
     <span id="likes_count">{{like_count}}</span>
     <span id="heart" class="glyphicon glyphicon-heart {% if liked %}text-danger{% endif %}" aria-hidden="true"></span>
@@ -48,8 +53,19 @@
 {% else %}
     <h3>login to post</h3>
 {% endif %} -->
+
+
+
+<!-- The Facebook like/dislike and the comments using facebook  -->
+
 <div class="fb-like" data-href="{{request.build_absolute_uri}}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5"></div>
+
+<!-- the end of facebook  -->
+
+
+<!-- a script using jquery for our like button   -->
+
 
 <script>
     function ajax_like2()
