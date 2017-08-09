@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 
 SITE_ID = 1
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
