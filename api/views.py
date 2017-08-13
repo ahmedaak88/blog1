@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView , RetrieveAPIView , DestroyAPIView , CreateAPIView , RetrieveUpdateAPIView
+from rest_framework.generics import ListAPIView , RetrieveAPIView , DestroyAPIView , CreateAPIView , RetrieveUpdateAPIView 
 from post.models import Post 
 from .serializers import *
 from rest_framework.permissions import AllowAny, IsAuthenticated , IsAdminUser
@@ -11,6 +11,23 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site 
 from django.contrib.auth.models  import User 
 from django.utils import timezone 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
+
+
+class UserLoginView(APIView):
+	serializer_class = UserLoginSerializer
+	permission_classes = [AllowAny]
+
+	def post(self, request,format=None):
+		data= request.data 
+		serializer = UserLoginSerializer(data=data)
+		if serializer.is_valid(raise_exception=True):
+			new_data= serializer.data
+			return Response(new_data, status=HTTP_200_OK)
+		return Response(serializer.errors,status=HTTP_400_BAD_REQUEST)
+
 
 class PostListAPIView(ListAPIView):
 	

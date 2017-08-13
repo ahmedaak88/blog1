@@ -2,6 +2,37 @@ from rest_framework import serializers
 from post.models import Post 
 from django_comments.models import Comment
 from django.contrib.auth.models import User
+from rest_framework_jwt.settings import api_settings
+
+
+class UserLoginSerializer(serializers.Serializer):
+	username= serializers.CharField()
+	password= serializers.CharField(style={'input_type': 'password'}, write_only=True )
+	token = serializers.CharField(allow_blank=True, read_only=True)
+	def validate(self, data):
+		user_obj = None
+		username= data.get('username')
+		password= data.get('password')
+		user = User.objects.filter(username=username)
+		if user.exists():
+			user_obj= user.first()
+		else:
+			raise serializers.ValidationError("this username does not exist")
+		if user_obj:
+			if not user_obj.check_password(password):
+				raise serializers.ValidationError("this password is wrong you dimwit")
+
+
+
+		jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+		jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+		payload = jwt_payload_handler(user_obj)
+		token = jwt_encode_handler(payload)
+
+		data["token"] = token
+
+		return data
 
 
 class UserCreateSerializer(serializers.ModelSerializer):

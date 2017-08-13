@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^comment/list/$', CommentListAPIView.as_view(), name="comment_list"),
     url(r'^comment/create/$', CommentCreateAPIView.as_view(), name="comment_create"),
     url(r'^register/$', UserCreateAPIView.as_view(), name="register"),
+    url(r'^login/$', UserLoginView.as_view(), name="login"),
 
     ]
