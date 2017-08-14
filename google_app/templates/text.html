@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<br><br><br>
+
+
+
+<h1>Status: {{response.status}}</h1>
+
+	{% if response.next_page_token %}
+		<form action="{% url 'google_app:text' %}" method="GET">
+			<input type="hidden" name="next_page_token" value="{{response.next_page_token}}">
+			<input type="submit" value="Next page" class="btn btn-primery">
+		</form>	
+	{% endif %}
+	
+
+
+<table class="table">
+		{% for result in response.results  %}
+			<tr>
+			<td>{{result.name}}</td>
+			<td>
+				<form action="{% url 'google_app:detail'%}" method="GET">
+					<input type="hidden" name="r" value="{{result.reference}}">
+					<input type="submit" value="More info" class="btn btn-primery">
+				</form>
+			</td>
+			</tr>
+		{% endfor %}
+</table>
+	
+
+
+
+
+
+{% endblock content %}

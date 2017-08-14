@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+<tr>
+	<td>{{response.result.name}}</td>
+</tr>
+<tr>
+	<td>{{response.result.formatted_address}}</td>
+</tr>
+<tr>
+	<td>{{response.result.formatted_phone_number}}</td>
+</tr>
+<tr>
+	<td>{{response.result.rating}}</td>
+</tr>
+</table>
+
+
+<iframe id="map" width="600" height="450" style="border:0" src="" frameborder="0" allowfullscreen></iframe>
+
+<script>
+	var options = {
+	  enableHighAccuracy: true,
+	  timeout: 5000,
+	  maximumAge: 0
+	};
+
+	function success(pos) {
+	  var crd = pos.coords;
+	  var map = $("#map");
+	  map.attr('src','https://www.google.com/maps/embed/v1/directions?key={{key}}&origin='+crd.latitude+','+crd.longitude+'&destination={{response.result.geometry.location.lat}},{{response.result.geometry.location.lng}}');
+	};
+
+	function error(err) {
+	  console.warn(`somthing went wrong`);
+	};
+
+	navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+</script>
+
+
+
+
+{% endblock content %}
